@@ -1,1 +1,13 @@
 nbproject/
+website/node_modules
+website/public/hot
+website/public/storage
+website/storage/*.key
+website/vendor
+website/.env
+website/.env.backup
+website/.phpunit.result.cache
+website/Homestead.json
+website/Homestead.yaml
+website/npm-debug.log
+website/yarn-error.log
