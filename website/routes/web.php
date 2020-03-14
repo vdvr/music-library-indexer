@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('guest');
+    return view('login');
+});
+Route::get('/register', function () {
+    return view('register');
+});
+Route::get('/library', function () {
+    return view('library');
 });
