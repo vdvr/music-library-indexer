@@ -9,7 +9,7 @@
             min-height: 100vh;
         }
         .button {
-            background-color: deepskyblue;
+            background-color: #0066ff;
             padding: 5px 26px;
             margin: 0px 20px;
             border: none;
