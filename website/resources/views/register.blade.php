@@ -9,7 +9,7 @@
             min-height: 100vh;
         }
         .button {
-            background-color: deepskyblue;
+            background-color: #0066ff;
             padding: 5px 26px;
             margin: 0px 20px;
             border: none;
@@ -33,14 +33,14 @@
 
 <div class="center-screen">
     <form action="#">
-        <input class="textfield" type="text" id="email" name="email" value="E-Mail">
-        <input class="textfield" type="text" id="password" name="password" value="Wachtwoord"><br>
+        <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail">
+        <input class="textfield" type="text" id="password" name="password" placeholder="Wachtwoord"><br>
 
-        <input class="textfield" type="text" id="email_verif" name="email_verif" value="E-Mail Verificatie">
-        <input class="textfield" type="text" id="password_verif" name="password_verif" value="Wachtwoord Verificatie"><br>
+        <input class="textfield" type="text" id="email_verif" name="email_verif" placeholder="E-Mail Verificatie">
+        <input class="textfield" type="text" id="password_verif" name="password_verif" placeholder="Wachtwoord Verificatie"><br>
 
-        <input class="textfield" type="text" id="username" name="username" value="Gebruikersnaam">
-        <input class="green-textfield" type="text" id="token" name="token" value="Token"><br>
+        <input class="textfield" type="text" id="username" name="username" placeholder="Gebruikersnaam">
+        <input class="green-textfield" type="text" id="token" name="token" placeholder="Token"><br>
         <input class="button" type="submit" value="Registreer">
     </form>
 </div>

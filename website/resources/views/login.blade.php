@@ -6,10 +6,10 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            min-height: 100vh;
+            min-height: 90vh;
         }
         .button {
-            background-color: deepskyblue;
+            background-color: #0066ff;
             padding: 5px 26px;
             margin: 0px 20px;
             border: none;
@@ -27,8 +27,8 @@
 
 <div class="center-screen">
     <form action="#">
-        <input class="textfield" type="text" id="email" name="email" value="E-Mail"><br>
-        <input class="textfield" type="text" id="password" name="password" value="Wachtwoord"><br>
+        <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail"><br>
+        <input class="textfield" type="text" id="password" name="password" placeholder="Wachtwoord"><br>
         <input class="button" type="submit" value="Login">
         <input class="button" type="submit" value="Registreer"
                onclick="window.location='{{ url("/register") }}'">

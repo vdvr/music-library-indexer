@@ -4,7 +4,7 @@
             font-family: sans-serif;
         }
         .button {
-            background-color: deepskyblue;
+            background-color: #0066ff;
             padding: 5px 26px;
             border: none;
             border-radius: 100px;
