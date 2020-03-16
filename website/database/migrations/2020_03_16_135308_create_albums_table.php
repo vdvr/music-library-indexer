@@ -17,9 +17,9 @@ class CreateAlbumsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('artist');
-            $table->boolean('producer');
-            $table->boolean('releasedate');
-            $table->boolean('catnum');
+            $table->string('format');
+            $table->string('producer');
+            $table->string('releaseyear');
         });
     }
 
