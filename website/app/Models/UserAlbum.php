@@ -10,10 +10,10 @@ class UserAlbum extends Model
     protected $primaryKey = ['albumId', 'username'];
 
     function albums() {
-        return $this->hasMany('Album', 'id', 'albumId');
+        return $this->belongsTo('App\Models\Album', 'albumId', 'id');
     }
     
     function users() {
-        return $this->hasMany('Users', 'username');
+        return $this->belongsTo('App\Models\User', 'username');
     }
 }

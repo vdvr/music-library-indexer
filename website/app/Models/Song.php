@@ -10,6 +10,6 @@ class Song extends Model
     protected $primaryKey = ['albumId', 'nr'];
     
     function albums() {
-        return $this->belongsTo('Album', 'id', 'albumId');
+        return $this->belongsTo('App\Models\Album', 'id', 'albumId');
     }
 }

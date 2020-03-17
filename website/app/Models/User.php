@@ -31,6 +31,6 @@ class User extends Authenticatable
     protected $primaryKey ='username';
     
     function userAlbum() {
-        return $this->belongsTo('UserAlbum', 'username');
+        return $this->hasMany('App\Models\UserAlbum', 'username');
     }
 }

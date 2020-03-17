@@ -20,7 +20,7 @@ class UserAlbumsTableSeeder extends Seeder
             'username' => 'seppe_playboy',
         ]);
         DB::table('userAlbums')->insert([
-            'albumId' => 3,
+            'albumId' => 1,
             'username' => 'saleem_willy',
         ]);
     }

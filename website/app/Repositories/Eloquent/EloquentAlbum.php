@@ -34,12 +34,16 @@ class EloquentAlbum implements AlbumRepository {
     }
     
     public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null) {
-        if (is_null($requestedUsername)) {
-            $allRequested = $this->albumModel
-                    ->where('username', $requestedUsername)->get();
-        } else {
+        // getting all albums to show
+        if (!is_null($requestedUsername)) { // albums of requested user
+            $allRequested = self::getAlbumsByUsername($requestedUsername);
+        }
+        else { // all albums
             $allRequested = $this->albumModel->all();
         }
+        
+        // get all ids of albums of asking user
+        $allAskingIds = self::getAlbumsByUsername($askingUsername)->value('albumId');
         
         /*
         $reply = array('present' => array(), 'absent' => array());
@@ -55,7 +59,13 @@ class EloquentAlbum implements AlbumRepository {
         }
         */
         
-        $allPresent = $this->albumModel->where('id', $allRequested->id)->where('username', $askingUsername)->get();
+        $allPresent = $allRequested
+                ->where('id', 1)
+                ->get();
+        $allAbsent = $allRequested
+                ->where('id', '!=', 2)
+                ->get();
+        
         return array('present' => $allSaved->where('asking'), 'absent');
     }
     
@@ -67,11 +77,17 @@ class EloquentAlbum implements AlbumRepository {
         $result = array();
         
         if (!is_null($username)) {
-            $reply['personal'] = $this->userAlbumModel->where('username', $username)->get();
+            $reply['personal'] = $this->userAlbumModel
+                    ->where('username', $username)->get();
         }
         
         $reply['public'] = $this->albumModel->where('id', $albumId)->get();
         
         return $reply;
+    }
+    
+    private function getAlbumsByUsername($username) {
+        return UserAlbum::with('albums')
+                    ->where('username', $username);
     }
 }

@@ -14,7 +14,7 @@ use App\Repositories\Eloquent;
 class RepositoryServiceProvider extends ServiceProvider {
     public function register()
     {
-        $this->app->singleton(Contracts\AlbumRepository::class, EloquentAlbum::class);
-        $this->app->singleton(Contracts\UserRepository::class, EloquentUser::class);
+        $this->app->singleton(Contracts\AlbumRepository::class, Eloquent\EloquentAlbum::class);
+        $this->app->singleton(Contracts\UserRepository::class, Eloquent\EloquentUser::class);
     }
 }
