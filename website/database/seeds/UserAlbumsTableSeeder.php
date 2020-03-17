@@ -11,16 +11,16 @@ class UserAlbumsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_albums')->insert([
-            'album_id' => 1,
+        DB::table('userAlbums')->insert([
+            'albumId' => 1,
             'username' => 'seppe_playboy',
         ]);
-        DB::table('user_albums')->insert([
-            'album_id' => 2,
+        DB::table('userAlbums')->insert([
+            'albumId' => 2,
             'username' => 'seppe_playboy',
         ]);
-        DB::table('user_albums')->insert([
-            'album_id' => 3,
+        DB::table('userAlbums')->insert([
+            'albumId' => 3,
             'username' => 'saleem_willy',
         ]);
     }

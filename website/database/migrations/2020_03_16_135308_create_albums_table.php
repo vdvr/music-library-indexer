@@ -19,7 +19,7 @@ class CreateAlbumsTable extends Migration
             $table->string('artist');
             $table->string('format');
             $table->string('producer');
-            $table->string('releaseyear');
+            $table->string('releaseYear');
         });
     }
 

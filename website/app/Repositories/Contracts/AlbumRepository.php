@@ -5,9 +5,10 @@
  * @author Luca
  */
 interface AlbumRepository {
-    public function getAllAlbums();
     
-    public function getAllAlbumsByUsername($username);
+    public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null);
     
-    public function getSavedAlbumsByUsername($username);
+    public function getSongs($albumId);
+    
+    public function getAlbumDetails($albumId, $username = null);
 }

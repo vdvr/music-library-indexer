@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAlbumsTable extends Migration
+class CreateSongsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateUserAlbumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('userAlbums', function (Blueprint $table) {
+        Schema::create('songs', function (Blueprint $table) {
             $table->integer('albumId')->unsigned();
-            $table->string('username');
-            $table->primary(['albumId', 'username']);
-            $table->string('catNr')->nullable();
-            $table->integer('rating')->nullable();
+            $table->integer('nr');
+            $table->primary(['albumId', 'nr']);
+            $table->string('name');
         });
         
-        Schema::table('userAlbums', function($table) {
+        Schema::table('songs', function($table) {
             $table->foreign('albumId')->references('id')->on('albums')->onDelete('cascade');
-            $table->foreign('username')->references('username')->on('users')->onDelete('cascade');
         });
     }
 
@@ -34,6 +32,6 @@ class CreateUserAlbumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_albums');
+        Schema::dropIfExists('songs');
     }
 }

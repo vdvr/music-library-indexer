@@ -16,21 +16,21 @@ class AlbumsTableSeeder extends Seeder
             'artist' => 'Elvis Presley',
             'format' => 'LP',
             'producer' => "dummyProducerMoodyBlue",
-            'releaseyear' => '1973',
+            'releaseYear' => '1973',
         ]);
         DB::table('albums')->insert([
             'title' => 'Thriller',
             'artist' => 'Michael Jackson',
             'format' => 'S',
             'producer' => "dummyProducerThriller",
-            'releaseyear' => '1993',
+            'releaseYear' => '1993',
         ]);
         DB::table('albums')->insert([
             'title' => 'At Folsom Prison',
             'artist' => 'Johnny Cash',
             'format' => 'LP',
             'producer' => "dummyProducerAtFolsomPrison",
-            'releaseyear' => '1963',
+            'releaseYear' => '1963',
         ]);
     }
 
