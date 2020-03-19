@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             UserAlbumsTableSeeder::class,
             SongsTableSeeder::class,
+            TokensTableSeeder::class,
             ]);
     }
 }

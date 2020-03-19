@@ -20,6 +20,7 @@ class LibraryController extends Controller
      */
     public function __construct(AlbumRepository $albumRepo) {
         $this->albumRepo = $albumRepo;
+        $this->middleware('auth');
     }
     
     public function showPublicLibrary() {
