@@ -4,6 +4,7 @@
 /public/js/app.js
 /storage/*.key
 /vendor
+/nbproject
 .env
 .env.backup
 .phpunit.result.cache

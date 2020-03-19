@@ -36,14 +36,14 @@ class EloquentAlbum implements AlbumRepository {
     public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null) {
         // getting all albums to show
         if (!is_null($requestedUsername)) { // albums of requested user
-            $allRequested = self::getAlbumsByUsername($requestedUsername);
+            $allRequested = $this->getAlbumsByUsername($requestedUsername);
         }
         else { // all albums
             $allRequested = $this->albumModel->all();
         }
         
         // get all ids of albums of asking user
-        $allAskingIds = self::getAlbumsByUsername($askingUsername)->value('albumId');
+        $allAskingIds = $this->getAlbumsByUsername($askingUsername)->value('albumId');
         
         /*
         $reply = array('present' => array(), 'absent' => array());
