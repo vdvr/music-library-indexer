@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,19 +16,19 @@ class UsersTableSeeder extends Seeder
             'username' => 'seppe_playboy',
             'email' => 'player69@gmail.com',
             'admin' => false,
-            'password' => "mijngeheimwachtwoordREDACTED",
+            'password' => Hash::make('supergeheim'),
         ]);
         DB::table('users')->insert([
             'username' => 'aadil_vdb',
             'email' => 'mocro_killer@hotmail.be',
             'admin' => false,
-            'password' => "mijngeheimwachtwoordREDACTED",
+            'password' => Hash::make('supergeheim'),
         ]);
         DB::table('users')->insert([
             'username' => 'saleem_willy',
             'email' => 'rocketeer@antwerp.be',
             'admin' => true,
-            'password' => "mijngeheimwachtwoordREDACTED",
+            'password' => Hash::make('supergeheim'),
         ]);
     }
 }

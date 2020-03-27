@@ -73,6 +73,10 @@ class EloquentAlbum implements AlbumRepository {
         return $this->songModel->where('albumId', $albumId)->get();
     }
     
+    public function getAlbumMetadata($albumId) {
+        //
+    }
+    
     public function getAlbumDetails($albumId, $username = null) {
         $result = array();
         

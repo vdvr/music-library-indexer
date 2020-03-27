@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        throw new BadMethodCallException("Implement removal of tokens in DB first.");
+        throw new \BadMethodCallException("Implement removal of tokens in DB first.");
         
         return User::create([
             'username' => $data['username'],
