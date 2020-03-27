@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> <!--ORGINELE LAYOUT!! VOOR REFERENTIE ZOALS CSRF_TOKEN-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">

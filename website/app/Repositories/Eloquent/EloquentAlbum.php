@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 use App\Repositories\Contracts\AlbumRepository;
 use App\Models\Album;
 use App\Models\UserAlbum;
+use App\Models\Song;
 
 
 /**
@@ -28,9 +29,10 @@ class EloquentAlbum implements AlbumRepository {
      */
     private $songModel;
     
-    public function __construct(Album $albumModel, UserAlbum $userAlbumModel) {
+    public function __construct(Album $albumModel, UserAlbum $userAlbumModel, Song $songModel) {
         $this->albumModel = $albumModel;
         $this->userAlbumModel = $userAlbumModel;
+        $this->songModel = $songModel;
     }
     
     public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null) {
@@ -69,29 +71,41 @@ class EloquentAlbum implements AlbumRepository {
         return array('present' => $allSaved->where('asking'), 'absent');
     }
     
+    private function getAlbumsByUsername($username) {
+        return UserAlbum::with('albums')
+                    ->where('username', $username);
+    }
+    
+    public function getAlbumDetails($albumId) {
+        return $this->albumModel->where('id', $albumId)->first();
+    }
+    
+    public function getAlbumPersonalDetails($albumId, $username) {
+        return $this->userAlbumModel->where('albumId', $albumId)->where('username', $username)->first();
+    }
+    
     public function getSongs($albumId) {
         return $this->songModel->where('albumId', $albumId)->get();
     }
     
-    public function getAlbumMetadata($albumId) {
-        //
-    }
-    
-    public function getAlbumDetails($albumId, $username = null) {
-        $result = array();
-        
-        if (!is_null($username)) {
-            $reply['personal'] = $this->userAlbumModel
-                    ->where('username', $username)->get();
+    public function updateAlbumPersonalDetails($albumId, $username, $aChanges) {
+        try {
+            $toChange = $this->userAlbumModel
+                    ->where('albumid', $albumId)
+                    ->where('username', $username)
+                    ->firstOrFail();
+            
+            if (isset($aChanges['rating'])) {
+                $toChange->rating = $aChanges['rating'];
+            }
+            if (isset($aChanges['catNr'])) {
+                $toChange->catNr = $aChanges['catNr'];
+            }
+            $toChange->save();
+
+            return true; 
+        } catch (Exception $ex) {
+            return false;
         }
-        
-        $reply['public'] = $this->albumModel->where('id', $albumId)->get();
-        
-        return $reply;
-    }
-    
-    private function getAlbumsByUsername($username) {
-        return UserAlbum::with('albums')
-                    ->where('username', $username);
     }
 }

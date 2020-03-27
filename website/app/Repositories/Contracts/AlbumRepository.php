@@ -9,8 +9,8 @@ namespace App\Repositories\Contracts;
 interface AlbumRepository {
     
     public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null);
-    
+    public function getAlbumDetails($albumId);
+    public function getAlbumPersonalDetails($albumId, $username);
     public function getSongs($albumId);
-    
-    public function getAlbumDetails($albumId, $username = null);
+    public function updateAlbumPersonalDetails($albumId, $username, $aChanges);
 }
