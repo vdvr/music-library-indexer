@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Token;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,8 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        throw new \BadMethodCallException("Implement removal of tokens in DB first.");
-        
+        $token = Token::where('value', $data['token'])->first();
+        print_r($token);
+        if($token === null)
+            throw new \BadMethodCallException("Token already taken or invalid");
+
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
