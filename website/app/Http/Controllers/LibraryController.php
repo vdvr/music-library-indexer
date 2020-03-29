@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\AlbumRepository;
 
@@ -27,8 +28,8 @@ class LibraryController extends Controller
 
     }
 
-    public function showPersonalLibrary($user) {
-        $thisExampleUser = $user; // with auth
+    public function showPersonalLibrary() {
+        $thisExampleUser = Auth::user()->username;
 
         return view('library', ['user' => $thisExampleUser, 'albums' => $this->albumRepo->getSavedAlbumsByUsername($thisExampleUser)]);
     }
