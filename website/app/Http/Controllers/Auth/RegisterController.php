@@ -66,11 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Search token in db
         $token = Token::where('value', $data['token'])->first();
-        print_r($token);
+        // Error if wrong token needs to be more pretty actually.
         if($token === null)
             throw new \BadMethodCallException("Token already taken or invalid");
-
+        // delete the token
+        Token::where('value', $data['token'], 0)->delete();
+        // give back the user
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
