@@ -20,7 +20,9 @@
                 <input class="textfield" type="text" id="filter" name="filter" value=""><br>
             </div>
             <div class="box" style="padding: 0; margin: 0;border: 1px solid black;">
-                <p>{{ $albums }}</p>
+                @foreach ($albums as $album)
+                    <p>{{ $album[0]->title }}</p>
+                @endforeach
             </div>
         </div>
         <div class="numbers alignright">

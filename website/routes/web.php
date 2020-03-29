@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect('/login');
 });
 Route::get('/register', function () {
     return view('register');
@@ -33,4 +33,4 @@ Route::post('register', 'Auth\RegisterController@register');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 // Test Routes...
-Route::get('testDetail', 'TestController@testDetails'); 
+Route::get('testDetail', 'TestController@testDetails');

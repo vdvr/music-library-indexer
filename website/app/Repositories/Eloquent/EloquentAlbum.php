@@ -28,13 +28,13 @@ class EloquentAlbum implements AlbumRepository {
      * @var Song
      */
     private $songModel;
-    
+
     public function __construct(Album $albumModel, UserAlbum $userAlbumModel, Song $songModel) {
         $this->albumModel = $albumModel;
         $this->userAlbumModel = $userAlbumModel;
         $this->songModel = $songModel;
     }
-    
+
     public function getSavedAlbumsByUsername($askingUsername, $requestedUsername = null) {
         // getting all albums to show
         if (!is_null($requestedUsername)) { // albums of requested user
@@ -43,10 +43,10 @@ class EloquentAlbum implements AlbumRepository {
         else { // all albums
             $allRequested = $this->albumModel->all();
         }
-        
+
         // get all ids of albums of asking user
         $allAskingIds = $this->getAlbumsByUsername($askingUsername)->value('albumId');
-        
+
         /*
         $reply = array('present' => array(), 'absent' => array());
         foreach ($allRequested as $album) {
@@ -60,41 +60,39 @@ class EloquentAlbum implements AlbumRepository {
             }
         }
         */
-        
+
         $allPresent = $allRequested
-                ->where('id', 1)
-                ->get();
+                ->where('id', 1);
         $allAbsent = $allRequested
-                ->where('id', '!=', 2)
-                ->get();
-        
-        return array('present' => $allSaved->where('asking'), 'absent');
+                ->where('id', '!=', 2);
+        //return array('present' => $allPresent, 'absent' => $allAbsent);
+        return array('present' => $allPresent);
     }
-    
+
     private function getAlbumsByUsername($username) {
         return UserAlbum::with('albums')
                     ->where('username', $username);
     }
-    
+
     public function getAlbumDetails($albumId) {
         return $this->albumModel->where('id', $albumId)->first();
     }
-    
+
     public function getAlbumPersonalDetails($albumId, $username) {
         return $this->userAlbumModel->where('albumId', $albumId)->where('username', $username)->first();
     }
-    
+
     public function getSongs($albumId) {
         return $this->songModel->where('albumId', $albumId)->get();
     }
-    
+
     public function updateAlbumPersonalDetails($albumId, $username, $aChanges) {
         try {
             $toChange = $this->userAlbumModel
                     ->where('albumid', $albumId)
                     ->where('username', $username)
                     ->firstOrFail();
-            
+
             if (isset($aChanges['rating'])) {
                 $toChange->rating = $aChanges['rating'];
             }
@@ -103,7 +101,7 @@ class EloquentAlbum implements AlbumRepository {
             }
             $toChange->save();
 
-            return true; 
+            return true;
         } catch (Exception $ex) {
             return false;
         }
