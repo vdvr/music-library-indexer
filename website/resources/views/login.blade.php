@@ -26,11 +26,8 @@
 
 
 <div class="center-screen">
-    <form action="#">
-        <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail"><br>
-        <input class="textfield" type="text" id="password" name="password" placeholder="Wachtwoord"><br>
-        <input class="button" type="submit" value="Login">
-        <input class="button" type="submit" value="Registreer"
-               onclick="window.location='{{ url("/register") }}'">
-    </form>
+    <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail"><br>
+    <input class="textfield" type="text" id="password" name="password" placeholder="Wachtwoord"><br>
+    <input class="button" type="submit" value="Login">
+    <input class="button" type="submit" value="Registreer">
 </div>
