@@ -36,12 +36,12 @@
             <h3 style="float: left;">Music Catalog Indexer Premium</h3>
             <div style="display: inline; float: right; width: 250px;">
                 <h4 style="float: left;">Hallo {{ $user }}</h4>
-                <h4 style="float: right;" onclick="window.location='{{ url("/") }}'">Log Uit</h4>
+                <h4 style="float: right;" onclick="window.location='{{ url("/logout") }}'">Log Uit</h4>
             </div>
         </div>
         <div style="clear: both;"></div>
         <hr>
-        
+
         @yield('content')
     </body>
 </html>

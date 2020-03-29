@@ -21,14 +21,46 @@
             margin: 6px 0px;
             width: 500px;
         }
+        .column {
+          float: left;
+          width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
     </style>
 </head>
 
-
-<div class="center-screen">
-    <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail"><br>
-    <input class="textfield" type="text" id="password" name="password" placeholder="Wachtwoord"><br>
-    <input class="button" type="submit" value="Login">
-    <input class="button" type="submit" value="Registreer">
-</div>
-
+<form method="POST" action="{{ route('login') }}">
+    @csrf
+    <div class="center-screen">
+        <input class="textfield" type="text" id="email" name="email" placeholder="E-Mail" required autocomplete="email" autofocus><br>
+        @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        <input id="password" type="password" class="textfield form-control @error('password') is-invalid @enderror" name="password" placeholder="Wachtwoord" required autocomplete="current-password">
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        <div class="row">
+          <div class="column">
+            <button type="submit" class="button btn btn-primary">
+                {{ __('Login') }}
+            </button>
+            </div>
+          <div class="column">
+            <button type="submit" class="button btn btn-primary">
+                {{ __('Register') }}
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
