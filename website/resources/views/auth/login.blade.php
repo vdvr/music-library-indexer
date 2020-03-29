@@ -57,9 +57,8 @@
             </button>
             </div>
           <div class="column">
-            <button type="submit" class="button btn btn-primary">
-                {{ __('Register') }}
-            </button>
+                <input class="button" type="submit" value="Registreer"
+                               onclick="window.location='{{ url("/register") }}'">
         </div>
         </div>
     </div>
