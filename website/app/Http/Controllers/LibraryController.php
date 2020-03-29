@@ -31,7 +31,10 @@ class LibraryController extends Controller
     public function showPersonalLibrary() {
         $thisExampleUser = Auth::user()->username;
 
-        return view('library', ['user' => $thisExampleUser, 'albums' => $this->albumRepo->getSavedAlbumsByUsername($thisExampleUser)]);
+        return view('library', ['user' => $thisExampleUser,
+            'albums' => $this->albumRepo->getSavedAlbumsByUsername($thisExampleUser),
+            'songs' => []
+        ]);
     }
 
     public function showOtherLibrary() {

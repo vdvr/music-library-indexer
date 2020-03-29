@@ -43,11 +43,9 @@ class EloquentAlbum implements AlbumRepository {
         else { // all albums
             $allRequested = $this->albumModel->all();
         }
-
         // get all ids of albums of asking user
         $allAskingIds = $this->getAlbumsByUsername($askingUsername)->value('albumId');
 
-        /*
         $reply = array('present' => array(), 'absent' => array());
         foreach ($allRequested as $album) {
             $id = $album['id'];
@@ -59,14 +57,12 @@ class EloquentAlbum implements AlbumRepository {
                 $reply['present'][] = $album;
             }
         }
-        */
-
-        $allPresent = $allRequested
-                ->where('id', 1);
-        $allAbsent = $allRequested
-                ->where('id', '!=', 2);
-        //return array('present' => $allPresent, 'absent' => $allAbsent);
-        return array('present' => $allPresent);
+        //$allPresent = $allRequested
+                //->where('id', 1);
+        //$allAbsent = $allRequested
+                //->where('id', '!=', 2);
+        //return array('present' => $reply['present'], 'absent' => $reply['absent']);
+        return $reply['present'];
     }
 
     private function getAlbumsByUsername($username) {

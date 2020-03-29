@@ -33,7 +33,7 @@
     </head>
     <body>
         <div class="topbar">
-            <h3 style="float: left;">Music Catalog Indexer Premium</h3>
+            <h3 style="float: left;"><a href="/library" style="color: black; text-decoration: none;">Music Catalog Indexer Premium</a></h3>
             <div style="display: inline; float: right; width: 250px;">
                 <h4 style="float: left;">Hallo <i>{{ $user }}</i></h4>
                 <h4 style="float: right;" onclick="window.location='{{ url("/logout") }}'">Log Uit</h4>
