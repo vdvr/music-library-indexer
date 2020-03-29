@@ -30,6 +30,7 @@
                 margin: auto;
             }
         </style>
+        <script src="{{asset('js/jquery.min.js')}}"></script>
     </head>
     <body>
         <div class="topbar">
